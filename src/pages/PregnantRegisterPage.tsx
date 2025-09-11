@@ -46,6 +46,15 @@ function SearchByCpf() {
       return `${dia}/${mes}/${ano}`;
   };
 
+  const handleCpfChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const valorFormatado = aplicarMascaraCPF(e.target.value);
+    setCpf(valorFormatado);
+    if (valorFormatado === '') {
+      setGestante(null);
+      setError('');
+    }
+  };
+
   const handleSearch = async () => {
     if (!cpf) return;
     const cpfApenasNumeros = cpf.replace(/\D/g, '');
@@ -76,7 +85,7 @@ function SearchByCpf() {
           type="text"
           value={cpf}
         
-          onChange={(e) => setCpf(aplicarMascaraCPF(e.target.value))}
+          onChange={handleCpfChange}
           placeholder="Digite o CPF para buscar"
           className="flex-grow w-full p-2 border border-gray-300 rounded"
         />

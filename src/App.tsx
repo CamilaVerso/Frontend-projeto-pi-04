@@ -12,10 +12,10 @@ function App() {
       <Layout>
         <Routes>
         
-          <Route path="/" element={<LoginPage />} />   
+          <Route path="/login" element={<LoginPage />} />   
 
            <Route 
-            path="/register" 
+            path="/" 
             element={
               <ProtectedRoute>
                 <PregnantRegisterPage />

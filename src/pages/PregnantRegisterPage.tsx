@@ -40,6 +40,12 @@ function SearchByCpf() {
       .substring(0, 14); 
   };
 
+  const formatarData = (dataString: string) => {    
+    if (!dataString) return '';
+      const [ano, mes, dia] = dataString.split('-');    
+      return `${dia}/${mes}/${ano}`;
+  };
+
   const handleSearch = async () => {
     if (!cpf) return;
     const cpfApenasNumeros = cpf.replace(/\D/g, '');
@@ -83,8 +89,8 @@ function SearchByCpf() {
         {gestante && (
           <div className="space-y-1 p-4 bg-gray-50 rounded">
             <p><strong>Nome:</strong> {gestante.nome}</p>
-            <p><strong>CPF:</strong> {gestante.cpf}</p>
-            <p><strong>Data de Nascimento:</strong> {gestante.data_nascimento}</p>
+            <p><strong>CPF:</strong> {aplicarMascaraCPF(gestante.cpf)}</p>
+            <p><strong>Data de Nascimento:</strong> {formatarData(gestante.data_nascimento)}</p>
           </div>
         )}
       </div>

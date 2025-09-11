@@ -4,7 +4,7 @@ import api from '../services/api';
 
 interface AuthContextType {
   isAuthenticated: boolean;
-  isLoading: boolean; // <-- NOVO ESTADO
+  isLoading: boolean;
   login: () => void;
   logout: () => Promise<void>; 
 }

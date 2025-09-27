@@ -1,6 +1,16 @@
 <h1 align="center">Rede Cegonha - Sistema de Acompanhamento Pré-Natal</h1>
 
-> 🚧 **Status:** Em Desenvolvimento 🚧
+<blockquote align="center">“Cuidar do início da vida é construir um futuro saudável e promissor.”</blockquote>
+
+<p align="center">
+  <a href="#-Funcionalidas-principais">Funcionalidades Principais</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-stack-de-tecnologias">Stack de Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-como-executar-o-projeto-localmente">Como Executar o Projeto Localmente</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-testes-e-qualidade-de-codigo">Testes e Qualidade de Código</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-desenvolvedores">Desenvolvedores</a>
+</p>
+
+<p align="center">🚧 <strong>Status:</strong> Em Desenvolvimento 🚧</p>
 
 Sistema web para gerenciamento e acompanhamento do cronograma pré-natal de gestantes. O projeto permite o cadastro de pacientes, a busca por CPF e a gestão de um cronograma de consultas e exames de forma interativa.
 
@@ -52,7 +62,7 @@ Este projeto é composto por dois repositórios separados: um para o Backend (AP
 
 ---
 
-### 1. Rodando o Backend (Servidor)
+### Rodando o Backend (Servidor)
 
 **Repositório do Backend:** https://github.com/CamilaVerso/Backend-projeto-pi-04.git
 
@@ -78,7 +88,7 @@ flask run --debug
 
 O backend estará rodando em `http://localhost:5000`.
 
-### 22. Rodando o Frontend (Cliente)
+### Rodando o Frontend (Cliente)
 
 **Repositório do Frontend:** https://github.com/CamilaVerso/Frontend-projeto-pi-04.git
 
@@ -123,7 +133,7 @@ npm run test:ui
 
 ![Relatório de Testes](public/RelatorioDeTestes.jpg)
 
-## Desenvolvedores
+## 🧑‍💻 Desenvolvedores
 
 | Aluno                            | RA       |
 | -------------------------------- | -------- |

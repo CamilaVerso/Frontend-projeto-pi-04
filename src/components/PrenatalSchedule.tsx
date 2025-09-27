@@ -79,7 +79,7 @@ function PrenatalSchedule({ scheduleData, setScheduleData }: PrenatalSchedulePro
           </tbody>
         </table>
       </div>
-      <p className="text-xs text-gray-500 mt-4 text-center">Clique em uma célula para alterar seu status de cor. O texto é editável.</p>
+      <p className="text-xs text-gray-500 mt-4 text-center">Clique em uma célula para alterar seu status de cor. </p><p className="text-xs text-gray-500 mt-4 text-center">O texto também é editável.</p>
     </section>
   );
 }

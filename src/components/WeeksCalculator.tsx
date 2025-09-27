@@ -53,7 +53,8 @@ function WeeksCalculator() {
               className="p-2 border border-gray-300 rounded"
             />
           </div>
-          <button 
+          <button
+            type="button" 
             onClick={handleCalculate} 
             className="w-full sm:w-auto mt-4 sm:mt-0 self-end bg-[#1a5276] text-white py-2 px-4 rounded hover:bg-[#0e3040] transition-colors"
           >

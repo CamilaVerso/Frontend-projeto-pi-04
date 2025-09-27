@@ -1,116 +1,38 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 type CellStatus = 'pending' | 'completed' | 'upcoming';
-
-interface CellData {
-  text: string;
-  status: CellStatus;
-}
-
-interface RowData {
-  week: string;
-  
-  cells: CellData[];
-}
-
+interface CellData { text: string; status: CellStatus; }
+interface RowData { week: string; cells: CellData[]; }
 
 const SectionTitle: React.FC<{ title: string }> = ({ title }) => (
     <h2 className="text-2xl font-bold text-center text-[#1a5276] mb-6">{title}</h2>
 );
 
+interface PrenatalScheduleProps {
+  scheduleData: RowData[];
+  setScheduleData: React.Dispatch<React.SetStateAction<RowData[]>>;
+}
 
-const initialScheduleData: RowData[] = [
- 
-  { week: 'Até 6 semanas', cells: [
-    { text: 'Assim que descobre a gravidez', status: 'pending' }, { text: 'Assim que descobre a gravidez', status: 'upcoming' },
-    { text: 'Assim que descobre a gravidez', status: 'upcoming' }, { text: 'Assim que descobre a gravidez', status: 'upcoming' },
-    { text: 'Na abertura Pre-Natal', status: 'upcoming' }, { text: 'USG Obstétrico', status: 'upcoming' },
-    { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' },
-    { text: '1º reunião na abertura PN', status: 'upcoming' }, { text: 'Na abertura Pre-Natal', status: 'upcoming' }
-  ]},
-  { week: 'Até 28 semanas', cells: [
-    { text: '', status: 'pending' }, { text: 'Uma vez por mês', status: 'upcoming' }, { text: '', status: 'upcoming' },
-    { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' },
-    { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }
-  ]},
-  { week: 'De 29 a 35 semanas', cells: [
-    { text: '', status: 'pending' }, { text: 'Quinzenal', status: 'upcoming' }, { text: '', status: 'upcoming' },
-    { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' },
-    { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }
-  ]},
-  { week: 'Apos 36 semanas', cells: [
-    { text: '', status: 'pending' }, { text: 'Semanal', status: 'upcoming' }, { text: '', status: 'upcoming' },
-    { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' },
-    { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }
-  ]},
-  { week: 'A cada Trimestre', cells: [
-    { text: '', status: 'pending' }, { text: 'Avaliação', status: 'upcoming' }, { text: 'Colher', status: 'upcoming' },
-    { text: 'Colher', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: 'Colher', status: 'upcoming' },
-    { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }
-  ]},
-   { week: '11 Semanas', cells: [
-    { text: '', status: 'pending' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' },
-    { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: 'USG Morfológico', status: 'upcoming' },
-    { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }
-  ]},
-    { week: '12 Semanas', cells: [
-    { text: '', status: 'pending' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' },
-    { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' },
-    { text: 'Colher IGG e IGM', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }
-  ]},
-  { week: '20 semanas', cells: [
-    { text: '', status: 'pending' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' },
-    { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: 'USG Morfológico', status: 'upcoming' },
-    { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }
-  ]},
-  { week: '24 semanas', cells: [
-    { text: '', status: 'pending' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' },
-    { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: 'USG Morfológico', status: 'upcoming' },
-    { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }
-  ]},
-  { week: '25 semanas', cells: [
-    { text: '', status: 'pending' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' },
-    { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' },
-    { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: 'Entrega da documentação', status: 'upcoming' }, { text: '', status: 'upcoming' }
-  ]},
-  { week: '28 semanas', cells: [
-    { text: '', status: 'pending' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' },
-    { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' },
-    { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: 'Anti-D p/RH-', status: 'upcoming' }
-  ]},
-  { week: '32 semanas', cells: [
-    { text: '', status: 'pending' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' },
-    { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: 'USG Obstétrico c/Doppler', status: 'upcoming' },
-    { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }
-  ]},
-  { week: '35 semanas', cells: [
-    { text: '', status: 'pending' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' },
-    { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' }, { text: '', status: 'upcoming' },
-    { text: '', status: 'upcoming' }, { text: 'Coleta SGB', status: 'upcoming' }, { text: 'Avaliação médica e psicossocial', status: 'upcoming' }, { text: '', status: 'upcoming' }
-  ]},
-  
-  
-];
-
-
-function PrenatalSchedule() {
-  const [schedule, setSchedule] = useState<RowData[]>(initialScheduleData);
+function PrenatalSchedule({ scheduleData, setScheduleData }: PrenatalScheduleProps) {
 
   const handleStatusChange = (rowIndex: number, cellIndex: number) => {
-    
-    const newSchedule = JSON.parse(JSON.stringify(schedule));
+    const newSchedule = JSON.parse(JSON.stringify(scheduleData));
     const currentStatus = newSchedule[rowIndex].cells[cellIndex].status;
 
-    
     let nextStatus: CellStatus = 'pending';
     if (currentStatus === 'pending') nextStatus = 'completed';
     else if (currentStatus === 'completed') nextStatus = 'upcoming';
     else if (currentStatus === 'upcoming') nextStatus = 'pending';
 
     newSchedule[rowIndex].cells[cellIndex].status = nextStatus;
-    setSchedule(newSchedule);
+    setScheduleData(newSchedule);
   };
-  
+
+  const handleTextChange = (event: React.FocusEvent<HTMLTableCellElement>, rowIndex: number, cellIndex: number) => {
+    const newSchedule = JSON.parse(JSON.stringify(scheduleData));
+    newSchedule[rowIndex].cells[cellIndex].text = event.currentTarget.textContent || '';
+    setScheduleData(newSchedule);
+  };
   
   const statusClasses: Record<CellStatus, string> = {
     pending: 'bg-yellow-100 text-yellow-800 hover:bg-yellow-200',
@@ -126,7 +48,7 @@ function PrenatalSchedule() {
   return (
     <section className="bg-white p-6 rounded-lg shadow-md">
       <SectionTitle title="Cronograma Pré-Natal" />
-      <div className="overflow-x-auto"> 
+      <div className="overflow-x-auto">
         <table className="w-full border-collapse text-sm text-center">
           <thead>
             <tr className="bg-gray-200">
@@ -137,16 +59,16 @@ function PrenatalSchedule() {
             </tr>
           </thead>
           <tbody>
-            {schedule.map((row, rowIndex) => (
+            {scheduleData.map((row, rowIndex) => (
               <tr key={rowIndex}>
-                <td className="p-2 border border-gray-300 font-medium">{row.week}</td>
+                <td className="p-2 border border-gray-300 font-medium bg-gray-50">{row.week}</td>
                 {row.cells.map((cell, cellIndex) => (
                   <td
                     key={cellIndex}
                     onClick={() => handleStatusChange(rowIndex, cellIndex)}
-                    
+                    onBlur={(e) => handleTextChange(e, rowIndex, cellIndex)}
                     contentEditable={true}
-                    suppressContentEditableWarning={true} 
+                    suppressContentEditableWarning={true}
                     className={`p-2 border border-gray-300 cursor-pointer transition-colors ${statusClasses[cell.status]}`}
                   >
                     {cell.text}
@@ -157,7 +79,7 @@ function PrenatalSchedule() {
           </tbody>
         </table>
       </div>
-      <p className="text-xs text-gray-500 mt-4 text-center">Clique em uma célula para alterar seu status (Pendente, Concluído, Próximo).</p>
+      <p className="text-xs text-gray-500 mt-4 text-center">Clique em uma célula para alterar seu status de cor. O texto é editável.</p>
     </section>
   );
 }

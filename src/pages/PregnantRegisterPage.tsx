@@ -7,7 +7,8 @@ import PrenatalSchedule from '../components/PrenatalSchedule';
 import WeeksCalculator from '../components/WeeksCalculator';
 import type { IGestante, FormData, RowData } from '../types';
 
-const initialFormState: FormData = {
+// eslint-disable-next-line react-refresh/only-export-components
+export const initialFormState: FormData = {
     cpf: '', nome: '', data_nascimento: '', idade: '', nome_mae: '', data_prevista_parto: '', ultima_menstruacao: '',
     endereco: '', cep: '', cidade: '', estado: '', telefone: ''
 };

@@ -3,10 +3,10 @@
 <blockquote align="center">“Cuidar do início da vida é construir um futuro saudável e promissor.”</blockquote>
 
 <p align="center">
-  <a href="#-Funcionalidas-principais">Funcionalidades Principais</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-Funcionalidades-principais">Funcionalidades Principais</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-stack-de-tecnologias">Stack de Tecnologias</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-como-executar-o-projeto-localmente">Como Executar o Projeto Localmente</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
-  <a href="#-testes-e-qualidade-de-codigo">Testes e Qualidade de Código</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
+  <a href="#-testes-e-qualidade-de-código">Testes e Qualidade de Código</a>&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp;
   <a href="#-desenvolvedores">Desenvolvedores</a>
 </p>
 
